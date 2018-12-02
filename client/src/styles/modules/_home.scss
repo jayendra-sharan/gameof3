@@ -1,0 +1,46 @@
+body {
+  font-family: $base-font-family;
+}
+
+header {
+  background-color: $header-background-color;
+  color: $header-font-color;
+  box-shadow: 0 5px 20px -10px rgb(40,44,63);
+  font-size: $header-font-size;
+  height: $header-height;
+  line-height: $header-height;
+  text-align: center;
+  font-weight: $bold;
+  z-index: 1;
+}
+footer {
+  background: $footer-background-color;
+  font-size: $footer-font-size;
+  color: $footer-font-color;
+  height: $footer-height;
+  line-height: $footer-height;
+  text-align: center;
+
+  a {
+    color: $anchor-default-color;
+    &:hover {
+      color: $anchor-default-hover-color;
+    }
+  }
+}
+main {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+  flex: 1;
+  width: 50%;
+  box-shadow: 0 -5px 40px -10px rgb(40,44,63);
+
+  @media only screen and (max-width: $break-small){
+    width: 90%;
+  }
+  @media only screen and (max-width: $break-medium){
+    // width: 85%;
+  }
+}

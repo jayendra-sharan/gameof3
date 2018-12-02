@@ -1,0 +1,36 @@
+.login-form {
+  max-width: 500px;
+  width: 500px;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  .form-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-shadow: -10px 10px 10px -10px #797a81;
+    padding: 15px;
+    border-radius: 5px;
+
+    .form-row-lhs {
+      width: 40%;
+    }
+    .form-row-rhs {
+      width: 60%;
+
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        height: 40px;
+      }
+    }
+    .form-row-merge {
+      width: 100%;
+      flex: 1;
+      text-align: center;
+    }
+  }
+}

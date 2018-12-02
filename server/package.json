@@ -1,0 +1,26 @@
+{
+  "name": "game-of-3-server",
+  "version": "1.0.0",
+  "description": "Minimal socket.io server for establishing communication between clients.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket",
+    "game-of-3"
+  ],
+  "author": "Jayendra Sharan",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "crypto": "^1.0.1",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5"
+  }
+}

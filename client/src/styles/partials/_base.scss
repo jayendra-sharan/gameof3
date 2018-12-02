@@ -1,0 +1,46 @@
+// font-weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// base
+$base-font-family: sans-serif;
+$base-font-weight: $bold;
+$base-font-size: 13px;
+$base-line-height: 1.4;
+
+// anchor
+$anchor-default-color: #ffffff;
+$anchor-default-hover-color: #e9effa;
+
+// header
+$header-background-color: #ffffff;
+$header-font-color: #333333;
+$header-font-size: 34px;
+$header-height: 60px;
+
+// footer
+$footer-background-color: #333333;
+$footer-font-color: #ffffff;
+$footer-font-size: 10px;
+$footer-height: 30px;
+
+// buttons
+$btn-primary-background-color: #4085ff;
+$btn-primary-font-color: #ffffff;
+$btn-secondary-background-color: #777777;
+$btn-secondary-font-color: #000000;
+$btn-outline-color: #000000;
+$btn-height: 30px;
+$btn-min-width: 100px;
+$btn-font-size: 16px;
+
+// input type text
+$inp-border-color: #333333;
+$inp-height: 30px;
+$inp-font-size: 20px;
+
+// breakpoints
+$break-small: 400px;
+$break-medium: 645px;
+$break-large: 1024px;
