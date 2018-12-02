@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import Login from ".";
+import gameServer from '../../mockData/gameServer';
 
 describe ('Login Component', () => {
   let component;
@@ -8,7 +9,8 @@ describe ('Login Component', () => {
   beforeEach (() => {
     component = shallow (
                   <Login
-                    availableGameCount={0}
+                    availableGameCountAuto={ gameServer.gameCount.data.availableGameCountAuto }
+                    availableGameCountManual={ gameServer.gameCount.data.availableGameCountManual }
                     enableJoin={false}
                     submitForm={submitMock} />
                 );
@@ -43,7 +45,8 @@ describe ('Login Component', () => {
   it ('should submit the form when submit button is clicked', () => {
     component = mount (
                   <Login
-                    availableGameCount={0}
+                    availableGameCountAuto={ gameServer.gameCount.data.availableGameCountAuto }
+                    availableGameCountManual={ gameServer.gameCount.data.availableGameCountManual }
                     submitForm={ submitMock } />
                 );
     expect (submitMock.mock.calls.length).toEqual (0);

@@ -13,9 +13,7 @@ class Options extends React.Component {
     }
 
     this.possibleMoves = [-1, 0, 1];
-    this.playerMode = GOT_CONST.DEFAULTS.P_MODE;
     this._onBtnClick = this._onBtnClick.bind (this);
-    this._updateState = this._updateState.bind (this);
   }
 
   componentDidMount () {
@@ -35,7 +33,7 @@ class Options extends React.Component {
     this.setState ({
       enableMove
     });
-    if (enableMove && this.playerMode === GOT_CONST.PLAYER_MODE.AUTO) {
+    if (enableMove && data.playerMode === GOT_CONST.PLAYER_MODE.AUTO) {
       setTimeout (() => {
         this._autoPlay ();
       }, 1000)

@@ -4,6 +4,7 @@ const router = express.Router ();
 const PLAYERS = require ('./players');
 const GAMES = require ('./games');
 const MOVES = require ('./moves');
+const SOCKET = require ('./socket');
 
 
 // returns available game count
@@ -12,7 +13,9 @@ router.get ('/api/available-game-count', (req, res) => {
   // send number of available games/no of players waiting.
   res.send ({
     data: {
-      availableGameCount: GAMES.getAvailableGameCount ()
+      availableGameCount: GAMES.getAvailableGameCount (),
+      availableGameCountManual: PLAYERS.getAllIdlePlayers ('M'),
+      availableGameCountAuto: PLAYERS.getAllIdlePlayers ('A')
     }
   });
 })
@@ -51,6 +54,14 @@ router.post ('/api/register-player', (req, res) => {
     opponent = PLAYERS.updatePlayerStatus (gameJoined.existingPlayerId);
   }
   
+  SOCKET.updateGameCount ({
+      availableGameCount: GAMES.getAvailableGameCount (),
+      availableGameCountManual: PLAYERS.getAllIdlePlayers ('M'),
+      availableGameCountAuto: PLAYERS.getAllIdlePlayers ('A')
+  });
+
+  SOCKET.addSocketIdInGame (game.gameId, GAMES.updateGameData);
+
   res.status (200).send ({ data: {
                               player,
                               game,
@@ -66,7 +77,7 @@ router.get ('/api/get-all-moves', (req, res) => {
 
 // returns all available player and all games ::: only for test purpose.
 router.get ('/api/appstate', (req, res) => {
-  res.send ({data: {players: PLAYERS.getAllPlayers (), games: GAMES.getAllGames ()}}).status (200);
+  res.send ({data: {players: PLAYERS.getAllPlayers (), games: GAMES._allGames ()}}).status (200);
 });
 
 module.exports = router;

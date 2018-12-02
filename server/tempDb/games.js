@@ -1,16 +1,28 @@
 const crypto = require ('crypto');
 const MOVES = require ('./moves');
-const SOCKET = require ('./socket');
 
 let allGames = [];
 
 const GAMES = {
+
   getAllGames () {
-    return allGames;
+    return this.removeKeyFromGames ('socketId');
   },
   
-  getAvailableGameCount () {
-    return allGames.filter (game => game.isAvailable).length
+  _allGames () {
+    return allGames;
+  },
+
+  getAvailableGameCount (type) {
+    switch (type) {
+      case 'A':
+      case 'M':
+        return allGames.filter (game => (
+          game.isAvailable && game.playerMode === type
+        )).length;
+      default:
+        return allGames.filter (game => game.isAvailable).length
+    }
   },
 
   createGame (playerId, startGameWith) {
@@ -72,7 +84,46 @@ const GAMES = {
         'error': 'NO_GAME_AVAILABLE'
       }
     }
+  },
+
+  updateGameData (gameId, key, value) {
+    allGames = allGames.map (game => {
+      if (game.gameId === gameId) {
+        game = {
+          ...game,
+          [key]: value
+        }
+      }
+      return game;
+    });
+  },
+
+  removeKeyFromGames (key) {
+    return allGames.reduce ((acc, game) => {
+      let tempGame = {};
+      for (let props in game) {
+        if (props !== key) {
+          tempGame[props] = game[props];
+        }
+      }
+      acc.push (tempGame);
+      return acc;
+    }, []);
+  },
+
+  destroyGameWith (key, value) {
+    let playerId = '';
+    allGames = allGames.reduce ((acc, game) => {
+      if (game[key] !== value) {
+        acc.push (game);
+      } else {
+        playerId = game.participants[0]
+      }
+      return acc;
+    }, []);
+    return playerId;
   }
+
 }
 
 module.exports = GAMES;

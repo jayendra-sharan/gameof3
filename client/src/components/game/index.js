@@ -14,7 +14,7 @@ const Game = ({ winner,
   let winnerMessage = labels.YOU_WIN;
   if (winner) {
     if (winner  !== thisPlayer.playerId) {
-      winnerMessage = opponent + labels.OPP_WIN;
+      winnerMessage = labels.OPP_WIN;
     }
   }
 

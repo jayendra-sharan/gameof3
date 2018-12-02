@@ -7,7 +7,7 @@ class Login extends React.Component {
   constructor () {
     super ();
     this.state = {
-      availablePlayerCount: 0,
+      gameCount: 0,
       playerMode: GOT_CONST.DEFAULTS.P_MODE,
       gameMode: GOT_CONST.DEFAULTS.G_MODE,
       nickname: '',
@@ -25,8 +25,9 @@ class Login extends React.Component {
   }
 
   _updateState (data) {
+    const gameCount = this._updateGameCount (this.state.playerMode, data);
     this.setState ({
-      availableGameCount: data.availableGameCount
+      gameCount
     });
   }
 
@@ -39,6 +40,23 @@ class Login extends React.Component {
     this._onNicknameChange = this._onNicknameChange.bind (this);
     this._onStartGameWithChange = this._onStartGameWithChange.bind (this);
     this._onFormSubmit = this._onFormSubmit.bind (this);
+  }
+
+  /**
+   * @description updates current game available count based on player mode selected.
+   * @param {String} playerMode currently selected player mode
+   * @param {Object} data this.props | nextProps
+   */
+  _updateGameCount (playerMode, data) {
+    let gameCount = 0;
+    // auto can play with both manual and auto
+    if (playerMode === GOT_CONST.PLAYER_MODE.AUTO) {
+      gameCount = data.availableGameCountAuto + data.availableGameCountManual;
+    } else {
+      // manual player can play only with auto player.
+      gameCount = data.availableGameCountAuto
+    }
+    return gameCount;
   }
 
   /**
@@ -58,8 +76,10 @@ class Login extends React.Component {
    */
   _onPlayerModeChange (event) {
     const playerMode = event.target.value;
+    const gameCount = this._updateGameCount (playerMode, this.props);
     this.setState ({
-      playerMode
+      playerMode,
+      gameCount
     });
   }
 
@@ -100,7 +120,6 @@ class Login extends React.Component {
   }
 
   render () {
-    const { availableGameCount } = this.props;
     return (
       <form onSubmit={ this._onFormSubmit } className='login-form'>
         <div className='form-row'>
@@ -168,12 +187,12 @@ class Login extends React.Component {
             </label>
 
             {
-              this.state.availableGameCount ?
+              this.state.gameCount ?
                 <label
                   className='radio-btn'
                   htmlFor='game-mode-join'>
                   <input
-                    disabled={ !availableGameCount }
+                    disabled={ !this.state.gameCount }
                     type='radio'
                     className='game-mode'
                     id='game-mode-join'
@@ -181,7 +200,7 @@ class Login extends React.Component {
                     onChange={  this._onGameModeChange }
                     checked={ this.state.gameMode === GOT_CONST.GAME_MODE.JOIN }
                     name='game-mode' />
-                  { `${labels.GAME_MODE_JOIN} (${availableGameCount})` }
+                  { `${labels.GAME_MODE_JOIN} (${this.state.gameCount})` }
                 </label>
                 :
                 null
@@ -223,7 +242,8 @@ class Login extends React.Component {
 
 Login.propTypes = {
   submitForm: types.submitForm.isRequired,
-  availableGameCount: types.availableGameCount.isRequired
+  availableGameCountAuto: types.availableGameCount.isRequired,
+  availableGameCountManual: types.availableGameCount.isRequired,
 }
 
 export default Login;

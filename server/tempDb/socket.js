@@ -1,12 +1,17 @@
 const MOVES = require ('./moves');
+const GAMES = require ('./games');
+const PLAYERS = require ('./players');
 
-let allSockets = {};
+let allSockets = {},
+    currentSocket = {};
 
 const SOCKET = {
   createSocket (io) {
     io.on ('connection', (socket) => {
+      currentSocket = socket;
       allSockets[socket.id] = socket;
-      console.log ('client connected');
+      console.log('client connected', socket.id);
+      
       socket.on ('action', (action) => {
         if (action.type === 'SOCKET/EMIT_MOVE') {
           this.messageReceived (action.moveData);
@@ -14,18 +19,37 @@ const SOCKET = {
       });
     
       socket.on ('disconnect', () => {
-        console.log ('Client disconnected.');
+        const playerId = GAMES.destroyGameWith ('socketId', socket.id);
+        if (playerId) {
+          PLAYERS.destroyPlayer (playerId);
+        }
+        this.updateGameCount ({
+          availableGameCount: GAMES.getAvailableGameCount (),
+          availableGameCountManual: PLAYERS.getAllIdlePlayers ('M'),
+          availableGameCountAuto: PLAYERS.getAllIdlePlayers ('A')
+        });
       });
     });    
   },
 
   messageReceived (message) {
-    console.log ('...message', message);
     const newMoveData = MOVES.updateMoves (message);
+    this.emitMessages ('SOCKET/M_EMIT_MOVE', 'moveData', newMoveData);
+  },
+
+  updateGameCount (gameCount) {
+    this.emitMessages ('SOCKET/EMIT_GAME_COUNT', 'gameCount', gameCount);
+  },
+
+  emitMessages (type, key, data) {
     for (let socketId in allSockets) {
       const socket = allSockets[socketId];
-      socket.emit ('action', {type: 'SOCKET/M_EMIT_MOVE', moveData: newMoveData});
+      socket.emit ('action', {type: type, [key]: data});
     }
+  },
+
+  addSocketIdInGame (gameId, callback) {
+    callback (gameId, 'socketId', currentSocket.id);
   }
 }
 

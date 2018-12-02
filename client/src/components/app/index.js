@@ -22,7 +22,8 @@ class App extends React.Component {
   render () {
     const { fetchAvailableGameCountFailed,
             fetchingAvailableGameCount,
-            availableGameCount,
+            availableGameCountAuto,
+            availableGameCountManual,
             registeringPlayer,
             registerPlayerFailed,
             thisPlayerId,
@@ -70,7 +71,8 @@ class App extends React.Component {
               registeringPlayer && <FullPageLoader transparent={ true } />
             }
             <Login
-              availableGameCount={ availableGameCount }
+              availableGameCountManual={ availableGameCountManual }
+              availableGameCountAuto={ availableGameCountAuto }
               submitForm={ (playerData) => {
                 submitForm (playerData);
               }}
@@ -85,7 +87,8 @@ class App extends React.Component {
 App.propTypes = {
   fetchAvailableGameCountFailed:types.fetchAvailableGameCountFailed.isRequired,
   fetchingAvailableGameCount: types.fetchingAvailableGameCount.isRequired,
-  availableGameCount: types.availableGameCount.isRequired,
+  availableGameCountManual: types.availableGameCount.isRequired,
+  availableGameCountAuto: types.availableGameCount.isRequired,
   registeringPlayer: types.registeringPlayer.isRequired,
   registerPlayerFailed: types.registerPlayerFailed.isRequired,
   thisPlayerId: types.thisPlayerId.isRequired,

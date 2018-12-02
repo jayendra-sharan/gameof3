@@ -28,7 +28,9 @@ const gameServer = {
   },
   'gameCount': {
     'data' : {
-      'availableGameCount': 2
+      'availableGameCount': 5,
+      'availableGameCountManual': 2,
+      'availableGameCountAuto': 3
     },
     'error': {
       'status': 500,

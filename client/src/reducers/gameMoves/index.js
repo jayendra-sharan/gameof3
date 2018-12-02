@@ -20,11 +20,15 @@ export const gameMoves = (state = initialState, action) => {
       if (action.moveData.playWith === 1) {
         winner = action.moveData.playerId
       }
-      return {
-        ...state,
-        moves: updateOrAddInArray (state.moves, action.moveData),
-        winner
-      };
+      if (state.moves[0].gameId === action.moveData.gameId) {
+        return {
+          ...state,
+          moves: updateOrAddInArray (state.moves, action.moveData),
+          winner
+        };
+      } else {
+        return state;
+      }
     default:
       return state;
   }

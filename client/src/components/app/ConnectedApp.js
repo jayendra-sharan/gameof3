@@ -7,7 +7,8 @@ import { gameDataActions } from '../../actions/gameData';
 const mapStateToProps = (state) => {
   const { fetchAvailableGameCountFailed,
           fetchingAvailableGameCount,
-          availableGameCount } = state.gameData;
+          availableGameCountAuto,
+          availableGameCountManual } = state.gameData;
   
   const { registeringPlayer,
           registerPlayerFailed,
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => {
   return {
     fetchAvailableGameCountFailed,
     fetchingAvailableGameCount,
-    availableGameCount,
+    availableGameCountAuto,
+    availableGameCountManual,
     registeringPlayer,
     registerPlayerFailed,
     thisPlayerId

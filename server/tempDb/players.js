@@ -38,6 +38,16 @@ const PLAYERS = {
       return player;
     });
     return thisPlayer;
+  },
+
+  getAllIdlePlayers (playerMode) {
+    return allPlayers.filter (player => (
+      player.playerStatus === 'I' && player.playerMode === playerMode
+    )).length
+  },
+
+  destroyPlayer (playerId) {
+    allPlayers = allPlayers.filter (player => player.playerId !== playerId);
   }
 }
 

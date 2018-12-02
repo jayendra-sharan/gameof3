@@ -31,7 +31,9 @@ describe ('Game Data Reducer', () => {
     const expectedState = {
       ...initialState,
       fetchingAvailableGameCount: false,
-      availableGameCount: gameServer.gameCount.data.availableGameCount
+      availableGameCount: gameServer.gameCount.data.availableGameCount,
+      availableGameCountManual: gameServer.gameCount.data.availableGameCountManual,
+      availableGameCountAuto: gameServer.gameCount.data.availableGameCountAuto
     }
 
     expect (gameData (undefined, successAction)).toEqual (expectedState);
