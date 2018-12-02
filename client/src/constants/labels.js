@@ -17,7 +17,8 @@ const labels = {
   'INVALID_MOVE': 'Invalid Move',
   'YOU_WIN': 'You Win. Want to play a again?',
   'OPP_WIN': 'You lose. Want to play a again?',
-  'NEW_GAME': 'New Game'
+  'NEW_GAME': 'New Game',
+  'WAITING': 'Waiting for an opponent'
 }
 
 export default labels;

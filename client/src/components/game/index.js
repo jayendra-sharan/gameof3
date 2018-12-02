@@ -5,6 +5,7 @@ import FullPageMessage from '../shared/FullPageMessage';
 import labels from '../../constants/labels';
 import types from '../../constants/types';
 import ConnectedOptions from '../options/ConnectedOptions';
+import FullPageLoader from '../shared/loader/FullPageLoader';
 
 const Game = ({ winner,
                 thisPlayer,
@@ -45,6 +46,13 @@ const Game = ({ winner,
           /> :
           null
         }
+      {
+        (moves.length === 1) ? 
+          <FullPageLoader
+            text={ labels.WAITING}
+            transparent={ true }
+            /> : null
+      }
       <div className='game-main-page'>
         {
           moves.map ((move, index) => {

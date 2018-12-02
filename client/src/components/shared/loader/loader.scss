@@ -5,6 +5,11 @@
 	justify-content: center;
   align-items: center;
 	flex: 1;
+	.loader-text {
+    position: absolute;
+    height: 130px;
+    font-size: 20px;
+	}
 	.LoaderBalls {
 		width: 90px;
 		display: flex;
