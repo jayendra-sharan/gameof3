@@ -1,0 +1,52 @@
+.game-main-page {
+  width: 100%;
+  margin: 10px;
+  border: 1px solid;
+  margin-bottom: $options-height;
+  padding-top: 20px;
+  .message-container {
+    background: $message-background;
+    color: $message-font-color;
+    max-width: 50%;
+    padding: 10px;
+    margin-left: 20px;
+    position: relative;
+    border-radius: $message-border-radius;
+
+    .nick-name {
+      text-align: center;
+      width: 100%;
+    }
+    .input-number {
+      width: $number-dimension;
+      height: $number-dimension;
+      position: absolute;
+      background: $message-font-color;
+      color: $message-background;
+      line-height: $number-dimension;
+      text-align: center;
+      font-size: $number-font-size;
+      border: $number-border-width solid $message-background;
+      border-radius: 100%;
+      top: -50%;
+      box-shadow: 0 5px 20px -10px #282c3f;
+    }
+  }
+  .message-container.my-message {
+    .nick-name {
+      padding-left: $number-dimension / 2;
+    }
+    .input-number {
+      left: -($number-border-width);
+    }
+  }
+  .message-container.their-message {
+    margin-left: 40%;
+    .nick-name {
+      width: 80%;
+    }
+    .input-number {
+      right: -($number-border-width);
+    }
+  }
+}

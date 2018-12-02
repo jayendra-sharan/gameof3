@@ -7,15 +7,16 @@ const getStartGameWith = (data) => {
 
 const mapStateToProps = (state) => {
   const { thisGameId,
-          thisPlayerId,
           opponent,
           data } = state.appData;
   
+          const { player } = state.appData.data;
+  
   return {
-    thisPlayerId,
+    thisPlayer: player,
     thisGameId,
     opponent,
-    startGameWith: getStartGameWith (data)
+    startGameWith: getStartGameWith (data) || 19 // temporary
   }
 }
 

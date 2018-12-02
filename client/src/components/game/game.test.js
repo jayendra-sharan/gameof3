@@ -7,7 +7,12 @@ describe ('Game landing page', () => {
   beforeEach (() => {
     component = shallow (
                   <Game
-                    thisPlayerId='random-string'
+                    thisPlayer={{
+                      playerId: 'random-id',
+                      playerStatus: 'I',
+                      playerMode: 'A',
+                      'nickname': 'this-player'
+                    }}
                     thisGameId='random-string'
                     opponent='bigtuna'
                     startGameWith={19}/>
