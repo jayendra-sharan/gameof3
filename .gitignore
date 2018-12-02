@@ -35,3 +35,9 @@
 /server/yarn-debug.log*
 /server/yarn-error.log*
 /.vscode/
+
+.DS_Store
+
+# temporary
+*.png
+*.epgz
