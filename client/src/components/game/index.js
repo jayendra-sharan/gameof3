@@ -25,18 +25,18 @@ const Game = ({ thisPlayer,
     <React.Fragment>
       <div className='game-main-page'>
         {
-          moves.map (move => {
+          moves.map ((move, index) => {
             return <Message
-                    key={ move.playWith }
+                    index={ index }
+                    moves={ moves }
+                    key={ move.moveId }
                     move={ move }
                     player={ thisPlayer }
                     opponent={ opponent } />
           })
         }
       </div>
-      <ConnectedOptions
-        playWith={ moves[moves.length - 1].playWith }
-        />
+      <ConnectedOptions />
     </React.Fragment>
   );
 };

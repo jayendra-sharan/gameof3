@@ -6,6 +6,7 @@ import gameServer from '../../mockData/gameServer';
 describe ('Option component', () => {
   const mockFn = jest.fn ();
   let component = shallow (<Options
+                      enableMove={ true }
                       onBtnClick={ mockFn }
                       playWith={ gameServer.sample.playWith }
                     />)
@@ -16,6 +17,7 @@ describe ('Option component', () => {
 
   it ('should submit response when clicked on any button', () => {
     component = mount (<Options
+                        enableMove={ true }
                         onBtnClick={ mockFn }
                         playWith={ gameServer.sample.playWith }
                       />);

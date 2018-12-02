@@ -7,7 +7,8 @@ class Options extends React.Component {
   constructor () {
     super ();
     this.state = {
-      invalidOption: false
+      invalidOption: false,
+      gameEnded: false
     }
 
     this._onBtnClick = this._onBtnClick.bind (this);
@@ -19,6 +20,14 @@ class Options extends React.Component {
     
     if (playWith) {
       this.props.onBtnClick (value, playWith);
+
+      if (playWith === 1) {
+        // this.props.declareWinner ();
+        this.setState ({
+          gameEnded: true
+        });
+        alert ('Winner');
+      }
     } else {
       this.setState ({
         invalidOption: true
@@ -43,7 +52,9 @@ class Options extends React.Component {
 
   render () {
     return (
-      <div className='options-container'>
+      // if game ended: disable moves
+      // if this.props.enableMove is false disable moves.
+      <div className={`options-container ${this.state.gameEnded ? 'disable-moves' : ''}`}>
         { this.state.invalidOption && 
           <div className='invalid-move'>
             { labels.INVALID_MOVE }
@@ -74,7 +85,8 @@ class Options extends React.Component {
 
 Options.propTypes = {
   playWith: types.playWith.isRequired,
-  onBtnClick: types.onBtnClick.isRequired
+  onBtnClick: types.onBtnClick.isRequired,
+  enableMove: types.enableMove.isRequired
 }
 
 

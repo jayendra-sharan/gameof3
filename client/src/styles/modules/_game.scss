@@ -3,7 +3,9 @@
   margin: 10px;
   border: 1px solid;
   margin-bottom: $options-height + 10;
-  padding-top: 20px;
+  max-height: 480px;
+  overflow-y: scroll;
+
   .message-container {
     background: $message-background;
     color: $message-font-color;
@@ -12,6 +14,7 @@
     margin-left: 20px;
     position: relative;
     border-radius: $message-border-radius;
+    margin-top: 80px;
 
     .nick-name {
       text-align: center;
@@ -31,6 +34,22 @@
       top: -50%;
       box-shadow: 0 5px 20px -10px #282c3f;
     }
+    &:first-child {
+      margin-top: 30px;
+    }
+    &:last-child {
+      margin-bottom: 30px;
+    }
+    .calc-row {
+      background: $message-font-color;
+      margin-top: 10px;
+      height: $calc-row-height;
+      text-align: center;
+      line-height: $calc-row-height;
+      border-radius: $message-border-radius;
+      font-size: $calc-font-size;
+      color: $message-background;
+    }
   }
   .message-container.my-message {
     margin-left: 40%;
@@ -38,7 +57,7 @@
       width: 80%;
     }
     .input-number {
-      right: -($number-border-width);
+      right: -($number-border-width * 2);
     }
   }
   .message-container.their-message {

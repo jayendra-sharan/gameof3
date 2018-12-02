@@ -15,6 +15,7 @@ const gameServer = {
       'isAvailable': true
     },
     'move': {
+      'moveId': 'M-b622cb6ccf77194eda21',
       'gameId': 'G-0298622f2ae60f38ade815',
       'playerId': 'P-b622cb6ccf77194eda21',
       'input': 19,
@@ -58,6 +59,7 @@ const gameServer = {
   },
   'gameMoves': {
     'moveData': {
+      'moveId': 'M-b622cb6ccf77194eda21',
       'gameId': 'G-0298622f2ae60f38ade815',
       'playerId': 'P-b622cb6ccf77194eda21',
       'input': 19,

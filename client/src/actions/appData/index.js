@@ -22,6 +22,7 @@ const registerPlayerFailed = (error) => ({
 const getMoveData = (response) => {
   const { game, player } = response.data;
   const moveData = {
+    'moveId': player.playerId.replace ('P-', 'M-'),
     'gameId': game.gameId,
     'playerId': player.playerId,
     'input': parseInt (game.startGameWith),

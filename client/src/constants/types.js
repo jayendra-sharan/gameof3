@@ -19,6 +19,7 @@ const types = {
 
   },
   'move': PropTypes.shape ({
+    'moveId': PropTypes.string.isRequired,
     'playerId': PropTypes.string.isRequired,
     'gameId': PropTypes.string.isRequired,
     'input': PropTypes.number.isRequired,
@@ -27,7 +28,10 @@ const types = {
   }),
   'opponent': PropTypes.string,
   'onBtnClick': PropTypes.func,
-  'playWith': PropTypes.number
+  'playWith': PropTypes.number,
+  'enableMove': PropTypes.bool,
+  'input': PropTypes.number,
+  'index': PropTypes.number
 };
 
 export default types;
