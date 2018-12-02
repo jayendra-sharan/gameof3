@@ -12,7 +12,8 @@ const labels = {
   'START_NUMBER': 'Start Number',
   'START_EX': 'e.g. 19',
   'SERVER_CONNECT_ERROR': 'Could not connect to the game of 3 server!',
-  'REGISTER_PLAYER_ERROR': 'Could not register you on game of 3 server!'
+  'REGISTER_PLAYER_ERROR': 'Could not register you on game of 3 server!',
+  'UNEXPECTED_ERROR': 'Uh oh! Something went wrong. Start fresh?'
 }
 
 export default labels;

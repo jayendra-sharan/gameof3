@@ -25,9 +25,9 @@ const getMoveData = (response) => {
     'gameId': game.gameId,
     'playerId': player.playerId,
     'input': game.startGameWith,
-    'isStartNumber': !!game.startGameWith
+    'isStartNumber': !!game.startGameWith,
+    'playWith': game.startGameWith
   }
-  
   return moveData;
 }
 

@@ -6,6 +6,7 @@ import FullPageMessage from '../shared/FullPageMessage';
 import FullPageLoader from '../shared/loader/FullPageLoader';
 import labels from '../../constants/labels';
 import ConnectedGame from '../game/ConnectedGame';
+import types from '../../constants/types';
 
 class App extends React.Component {
   constructor () {
@@ -83,14 +84,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  fetchAvailableGameCountFailed:PropTypes.bool.isRequired,
-  fetchingAvailableGameCount: PropTypes.bool.isRequired,
-  availableGameCount: PropTypes.number.isRequired,
-  registeringPlayer: PropTypes.bool.isRequired,
-  registerPlayerFailed: PropTypes.bool.isRequired,
-  thisPlayerId: PropTypes.string.isRequired,
-  getAvailableGameCount: PropTypes.func.isRequired,
-  submitForm: PropTypes.func.isRequired
+  fetchAvailableGameCountFailed:types.fetchAvailableGameCountFailed.isRequired,
+  fetchingAvailableGameCount: types.fetchingAvailableGameCount.isRequired,
+  availableGameCount: types.availableGameCount.isRequired,
+  registeringPlayer: types.registeringPlayer.isRequired,
+  registerPlayerFailed: types.registerPlayerFailed.isRequired,
+  thisPlayerId: types.thisPlayerId.isRequired,
+  getAvailableGameCount: types.getAvailableGameCount.isRequired,
+  submitForm: types.submitForm.isRequired
 }
 
 export default App;

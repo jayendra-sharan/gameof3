@@ -1,31 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Message from './components/Message';
+import FullPageMessage from '../shared/FullPageMessage';
+import labels from '../../constants/labels';
+import types from '../../constants/types';
 
 const Game = ({ thisPlayer,
-                thisGameId,
-                opponent,
-                startGameWith }) => {
+                moves,
+                opponent }) => {
+  
+  if (!moves.length) {
+    return <FullPageMessage
+            message={ labels.UNEXPECTED_ERROR }
+            isHtml={ false }
+            actionBtn={ true }
+            btnLabel={ labels.RELOAD_PAGE }
+            onBtnClick={ () => {
+              window.location.reload ();
+            }}
+          />
+  }
   return (
     <div className='game-main-page'>
-      <Message
-        nickname={ thisPlayer.nickname }
-        inputNumber={ startGameWith }
-        isMyMessage={ false }
-        isStartGameWith={ true } />
+      {
+        moves.map (move => {
+          return <Message
+                  key={ move.playWith }
+                  move={ move }
+                  player={ thisPlayer }
+                  opponent={ opponent } />
+        })
+      }
     </div>
   );
 };
 
 Game.propTypes = {
-  thisPlayer: PropTypes.shape({
-    playerId: PropTypes.string.isRequired,
-    playerStatus: PropTypes.string.isRequired,
-    playerMode: PropTypes.string.isRequired,
-    nickname: PropTypes.string.isRequired
-  }).isRequired,
-  thisGameId: PropTypes.string.isRequired,
-  opponent: PropTypes.string,
-  startGameWith: PropTypes.number.isRequired
+  thisPlayer: types.player.isRequired,
+  opponent: types.opponent.isRequired,
+  moves: PropTypes.arrayOf (types.move).isRequired
 }
 export default Game;

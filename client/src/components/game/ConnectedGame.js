@@ -1,22 +1,13 @@
 import { connect } from 'react-redux';
 import Game from '.';
 
-const getStartGameWith = (data) => {
-  return parseInt (data.game.startGameWith);
-}
-
 const mapStateToProps = (state) => {
-  const { thisGameId,
-          opponent,
-          data } = state.appData;
-  
-          const { player } = state.appData.data;
+  const { opponent } = state.appData;
   
   return {
-    thisPlayer: player,
-    thisGameId,
+    thisPlayer: state.appData.data.player,
     opponent,
-    startGameWith: getStartGameWith (data) || 19 // temporary
+    moves: []
   }
 }
 

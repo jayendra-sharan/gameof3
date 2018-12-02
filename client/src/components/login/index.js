@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import labels from "../../constants/labels";
 import GOT_CONST from "../../constants/gotConstants";
+import types from "../../constants/types";
 
 class Login extends React.Component {
   constructor () {
@@ -222,8 +223,8 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  submitForm: PropTypes.func.isRequired,
-  availableGameCount: PropTypes.number.isRequired
+  submitForm: types.submitForm.isRequired,
+  availableGameCount: types.availableGameCount.isRequired
 }
 
 export default Login;
