@@ -3,16 +3,17 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { gameData } from './reducers/gameData';
 import { appData } from './reducers/appData';
+import { gameMoves } from "./reducers/gameMoves";
 
 const rootReducers = combineReducers ({
   gameData,
-  appData
+  appData,
+  gameMoves
 });
 
 const isDevelopment = (env) => {
   return env === 'development';
 }
-
 
 export const configureStore = (env) => {
   const middlewares = [ thunk ]

@@ -21,6 +21,7 @@ const gameServer = {
         'participants': [
           'P-b622cb6ccf77194eda21'
         ],
+        startGameWith: '19',
         'isAvailable': true
       },
       opponent: 'bigtuna'
@@ -28,6 +29,14 @@ const gameServer = {
     error: {
       status: 500,
       data: 'Server not available.'
+    }
+  },
+  gameMoves: {
+    'moveData': {
+      'gameId': 'G-0298622f2ae60f38ade815',
+      'playerId': 'P-b622cb6ccf77194eda21',
+      'input': '19',
+      'isStartNumber': true
     }
   }
 }

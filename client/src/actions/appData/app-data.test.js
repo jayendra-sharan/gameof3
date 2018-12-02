@@ -32,7 +32,8 @@ describe ('App Data', () => {
 
     const expectedActions = [
       { type: actionTypes.APP_DATA.REGISTER_PLAYER_START },
-      { type: actionTypes.APP_DATA.REGISTER_PLAYER_SUCCESS, appData: gameServer.appData.data }
+      { type: actionTypes.APP_DATA.REGISTER_PLAYER_SUCCESS, appData: gameServer.appData.data },
+      { type: actionTypes.GAME_MOVES.ADD_A_MOVE, moveData: gameServer.gameMoves.moveData }
     ];
 
     return store.dispatch (appDataActions.registerPlayer ()).then (() => {

@@ -1,6 +1,7 @@
 import actionTypes from "../../constants/actionTypes";
 import axios from "axios";
 import API from "../../constants/api";
+import { gameMovesActions } from '../gameMoves';
 
 // action creator
 const registerPlayerStart = () => ({
@@ -18,6 +19,18 @@ const registerPlayerFailed = (error) => ({
   error: error
 });
 
+const getMoveData = (response) => {
+  const { game, player } = response.data;
+  const moveData = {
+    'gameId': game.gameId,
+    'playerId': player.playerId,
+    'input': game.startGameWith,
+    'isStartNumber': !!game.startGameWith
+  }
+  
+  return moveData;
+}
+
 export const appDataActions = {
   registerPlayer (payload) {
     return (dispatch) => {
@@ -29,10 +42,10 @@ export const appDataActions = {
         method: 'post'
       }).then (response => {
         dispatch (registerPlayerSuccess (response.data));
+        dispatch (gameMovesActions.makeAMove (getMoveData (response.data)));
       }).catch (error => {
         dispatch (registerPlayerFailed (error.response));
       });
     }
   }
-
 }
