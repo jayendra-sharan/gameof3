@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Login from '../login';
 import Layout from '../shared/Layout';
 import FullPageMessage from '../shared/FullPageMessage';

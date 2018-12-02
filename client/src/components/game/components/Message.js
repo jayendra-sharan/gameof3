@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import types from '../../../constants/types';
 
 const getIsMyMessage = (move, player) => {

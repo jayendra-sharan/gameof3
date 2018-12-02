@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import labels from "../../constants/labels";
 import GOT_CONST from "../../constants/gotConstants";
 import types from "../../constants/types";
