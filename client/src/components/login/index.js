@@ -11,7 +11,7 @@ class Login extends React.Component {
       playerMode: GOT_CONST.DEFAULTS.P_MODE,
       gameMode: GOT_CONST.DEFAULTS.G_MODE,
       nickname: '',
-      startWith: ''
+      startGameWith: ''
     }
     this._bindEvents ();
   }
@@ -37,7 +37,7 @@ class Login extends React.Component {
     this._onPlayerModeChange = this._onPlayerModeChange.bind (this);
     this._onGameModeChange = this._onGameModeChange.bind (this);
     this._onNicknameChange = this._onNicknameChange.bind (this);
-    this._onStartWithChange = this._onStartWithChange.bind (this);
+    this._onStartGameWithChange = this._onStartGameWithChange.bind (this);
     this._onFormSubmit = this._onFormSubmit.bind (this);
   }
 
@@ -78,10 +78,10 @@ class Login extends React.Component {
    * @description event handler for start number change.
    * @param {Object} event user input event.
    */
-  _onStartWithChange (event) {
-    const startWith = event.target.value;
+  _onStartGameWithChange (event) {
+    const startGameWith = event.target.value;
     this.setState ({
-      startWith
+      startGameWith
     });
   }
 
@@ -95,7 +95,7 @@ class Login extends React.Component {
       nickname: this.state.nickname,
       gameMode: this.state.gameMode,
       playerMode: this.state.playerMode,
-      startWith: this.state.startWith
+      startGameWith: this.state.startGameWith
     });
   }
 
@@ -202,8 +202,8 @@ class Login extends React.Component {
                 type='text'
                 placeholder={ labels.START_EX }
                 className='start-with'
-                value={ this.state.startWith }
-                onChange={ this._onStartWithChange }
+                value={ this.state.startGameWith }
+                onChange={ this._onStartGameWithChange }
                 id='start-with' />
             </div>
           </div>
