@@ -1,6 +1,5 @@
 import configureMockStore from 'redux-mock-store';
-import moxios from 'moxios';
-import thunk from 'redux-thunk';
+import MockedSocket from 'socket.io-mock';
 import actionTypes from '../../constants/actionTypes';
 import { gameMovesActions } from '.';
 import gameServer from '../../mockData/gameServer';

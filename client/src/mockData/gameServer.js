@@ -1,5 +1,6 @@
 const gameServer = {
   'sample': {
+    'winner': 'P-b622cb6ccf77194eda21',
     'player': {
       'nickname': 'A',
       'playerMode': 'A',

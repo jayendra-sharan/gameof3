@@ -36,6 +36,6 @@ describe ('Game Data', () => {
     
     return store.dispatch (gameDataActions.fetchGameCount ()).then (() => {
       expect (store.getActions ()).toEqual (expectedActions);
-    })
+    });
   });
 })

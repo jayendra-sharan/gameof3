@@ -8,6 +8,7 @@ describe ('Game landing page', () => {
   beforeEach (() => {
     component = shallow (
                   <Game
+                    winner={ gameServer.sample.winner }
                     thisPlayer={ gameServer.sample.player }
                     moves={[
                       gameServer.sample.move

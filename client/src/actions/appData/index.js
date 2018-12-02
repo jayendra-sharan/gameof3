@@ -2,6 +2,7 @@ import actionTypes from "../../constants/actionTypes";
 import axios from "axios";
 import API from "../../constants/api";
 import { gameMovesActions } from '../gameMoves';
+import GOT_CONST from "../../constants/gotConstants";
 
 // action creator
 const registerPlayerStart = () => ({
@@ -19,12 +20,19 @@ const registerPlayerFailed = (error) => ({
   error: error
 });
 
-const getMoveData = (response) => {
+const getMoveData = (response, gameMode) => {
   const { game, player } = response.data;
+  let { playerId } = player;
+
+  // in join mode, the first had will be by the game creator.
+  if (gameMode === GOT_CONST.GAME_MODE.JOIN) {
+    playerId = game.participants[0];
+  }
+
   const moveData = {
     'moveId': player.playerId.replace ('P-', 'M-'),
     'gameId': game.gameId,
-    'playerId': player.playerId,
+    'playerId': playerId,
     'input': parseInt (game.startGameWith),
     'isStartNumber': !!game.startGameWith,
     'playWith': parseInt (game.startGameWith)
@@ -43,7 +51,7 @@ export const appDataActions = {
         method: 'post'
       }).then (response => {
         dispatch (registerPlayerSuccess (response.data));
-        dispatch (gameMovesActions.makeAMove (getMoveData (response.data)));
+        dispatch (gameMovesActions.makeAMove (getMoveData (response.data, payload.gameMode)));
       }).catch (error => {
         dispatch (registerPlayerFailed (error.response));
       });

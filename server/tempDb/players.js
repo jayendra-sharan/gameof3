@@ -1,7 +1,12 @@
 const crypto = require ('crypto');
 
+let allPlayers = [];
+
 const PLAYERS = {
-  players: [],
+
+  getAllPlayers () {
+    return allPlayers;
+  },
 
   createPlayer (playerData) {
     const playerId = 'P-' + crypto.randomBytes(10).toString('hex');
@@ -9,8 +14,8 @@ const PLAYERS = {
       ...playerData,
       playerId
     }
-    this.players = [
-      ...this.players,
+    allPlayers = [
+      ...allPlayers,
       playerData
     ]
     return playerData;
@@ -22,7 +27,7 @@ const PLAYERS = {
    */
   updatePlayerStatus (playerId) {
     let thisPlayer = null;
-    this.players = this.players.map (player => {
+    allPlayers = allPlayers.map (player => {
       if (playerId === player.playerId) {
         player = {
           ...player,

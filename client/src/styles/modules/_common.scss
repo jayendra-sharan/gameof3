@@ -23,6 +23,15 @@
     margin: 20px 0px;
   }
 }
+.full-page-message.is-page-transparent {
+  position: absolute;
+  color: $base-font-color;
+  background: $transparent-black;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 #root > .full-page-message {
   height: 100vh;
 }

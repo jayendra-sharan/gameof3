@@ -6,13 +6,14 @@ const bodyParser = require ('body-parser');
 const cors = require ('cors');
 
 const port = 4001;
-const tempDb = require ('./tempDb/temp-db');
+const gameRouter = require ('./tempDb/temp-db');
+const socketServer = require ('./tempDb/socket');
 
 const app = express ();
 app.use (cors ());
 app.use (bodyParser.urlencoded({ extended: true }));
 app.use (bodyParser.json ());
-app.use (tempDb);
+app.use (gameRouter);
 
 const server = http.createServer (app);
 const io = socketIo (server);
@@ -26,17 +27,7 @@ const getApiAndEmit = async socket => {
   }
 };
 
-let currentIndex = 0;
-io.on ('connection', (socket) => {
-  console.log ('New client connected.')
-  setInterval (() => {
-    getApiAndEmit (socket);
-  }, 100);
-
-  socket.on ('disconnect', () => {
-    console.log ('Client disconnected.');
-  });
-});
+socketServer.createSocket (io);
 
 server.listen (port, () => {
   console.log (`Server listening on *.${port}`);

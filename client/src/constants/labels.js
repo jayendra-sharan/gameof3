@@ -14,7 +14,10 @@ const labels = {
   'SERVER_CONNECT_ERROR': 'Could not connect to the game of 3 server!',
   'REGISTER_PLAYER_ERROR': 'Could not register you on game of 3 server!',
   'UNEXPECTED_ERROR': 'Uh oh! Something went wrong. Start fresh?',
-  'INVALID_MOVE': 'Invalid Move'
+  'INVALID_MOVE': 'Invalid Move',
+  'YOU_WIN': 'You Win. Want to play a again?',
+  'OPP_WIN': ' Win. Want to play a again?',
+  'NEW_GAME': 'New Game'
 }
 
 export default labels;

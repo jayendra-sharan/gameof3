@@ -3,6 +3,10 @@ const router = express.Router ();
 
 const PLAYERS = require ('./players');
 const GAMES = require ('./games');
+const MOVES = require ('./moves');
+
+
+// returns available game count
 
 router.get ('/api/available-game-count', (req, res) => {
   // send number of available games/no of players waiting.
@@ -13,10 +17,11 @@ router.get ('/api/available-game-count', (req, res) => {
   });
 })
 
-router.get ('/api/appstate', (req, res) => {
-  res.send ({data: {players: PLAYERS.players, games: GAMES.games}}).status (200);
-});
-
+/**
+ * 1. creates an entry for a player.
+ * 2. creates an entry for a game and assigns the first participant.
+ * 3. creates an entry for game moves.
+ */
 router.post ('/api/register-player', (req, res) => {
   const nickname = req.body.nickname || 'AI';
   const playerMode = req.body.playerMode || 'A'
@@ -53,5 +58,15 @@ router.post ('/api/register-player', (req, res) => {
                         });
 });
 
+
+// returns all game moves ::: only for test purpose
+router.get ('/api/get-all-moves', (req, res) => {
+  res.send ( {data: { moves: MOVES.getAllGameMoves ()}}).status (200);
+})
+
+// returns all available player and all games ::: only for test purpose.
+router.get ('/api/appstate', (req, res) => {
+  res.send ({data: {players: PLAYERS.getAllPlayers (), games: GAMES.getAllGames ()}}).status (200);
+});
 
 module.exports = router;

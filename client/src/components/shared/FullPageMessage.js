@@ -1,12 +1,13 @@
 import React from 'react';
 
-const FullPageMessage = ({ message,
+const FullPageMessage = ({ transparent, 
+                          message,
                           isHtml,
                           actionBtn,
                           btnLabel,
                           onBtnClick }) => {
   return (
-    <div className='full-page-message'>
+    <div className={`full-page-message ${transparent ? 'is-page-transparent' : ''}`}>
       {
         isHtml ? null :
         <div className='message-text'>

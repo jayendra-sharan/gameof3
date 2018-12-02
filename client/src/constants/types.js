@@ -31,7 +31,9 @@ const types = {
   'playWith': PropTypes.number,
   'enableMove': PropTypes.bool,
   'input': PropTypes.number,
-  'index': PropTypes.number
+  'index': PropTypes.number,
+  'winner': PropTypes.string,
+  'playerMode': PropTypes.string
 };
 
 export default types;

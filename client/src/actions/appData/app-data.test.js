@@ -36,7 +36,14 @@ describe ('App Data', () => {
       { type: actionTypes.GAME_MOVES.ADD_A_MOVE, moveData: gameServer.gameMoves.moveData }
     ];
 
-    return store.dispatch (appDataActions.registerPlayer ()).then (() => {
+    const payload = {
+      'nickname': 'A',
+      'playerMode': 'A',
+      'gameMode': 'C',
+      'playerStatus': 'I'
+    };
+
+    return store.dispatch (appDataActions.registerPlayer (payload)).then (() => {
       expect (store.getActions ()).toEqual (expectedActions);
     });
   });
