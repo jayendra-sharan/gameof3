@@ -34,6 +34,12 @@ describe ('Login Component', () => {
     expect (component.find ('.enter-game').length).toEqual (1);
   });
 
+  it ('should display a text box for entering a number if game mode is create', () => {
+    expect (component.find ('#game-mode-create').length).toEqual (1);
+    expect (component.find ('#game-mode-create').props().checked).toBe (true);
+    expect (component.find ('.start-game-with').length).toEqual (1);
+  });
+
   it ('should submit the form when submit button is clicked', () => {
     component = mount (
                   <Login

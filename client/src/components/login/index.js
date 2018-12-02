@@ -193,7 +193,7 @@ class Login extends React.Component {
           (this.state.gameMode === GOT_CONST.GAME_MODE.CREATE) &&
           <div className='form-row'>
             <div className='form-row-lhs'>
-              <label htmlFor='start-with'>
+              <label htmlFor='start-game-with'>
                 { labels.START_NUMBER }
               </label>
             </div>
@@ -201,10 +201,10 @@ class Login extends React.Component {
               <input
                 type='text'
                 placeholder={ labels.START_EX }
-                className='start-with'
+                className='start-game-with'
                 value={ this.state.startGameWith }
                 onChange={ this._onStartGameWithChange }
-                id='start-with' />
+                id='start-game-with' />
             </div>
           </div>
         }
