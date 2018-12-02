@@ -5,71 +5,75 @@ import FullPageMessage from '../shared/FullPageMessage';
 import labels from '../../constants/labels';
 import types from '../../constants/types';
 import ConnectedOptions from '../options/ConnectedOptions';
-import FullPageLoader from '../shared/loader/FullPageLoader';
 
-const Game = ({ winner,
-                thisPlayer,
-                moves,
-                opponent }) => {
+class Game extends React.Component {
+  constructor () {
+    super ();
+    this.gamePage = React.createRef();
+  }
 
-  let winnerMessage = labels.YOU_WIN;
-  if (winner) {
-    if (winner  !== thisPlayer.playerId) {
-      winnerMessage = labels.OPP_WIN;
+  componentWillReceiveProps () {
+    debugger;
+    if (this.gamePage.current) {
+      const h = this.gamePage.current.getBoundingClientRect ().height;
+      this.gamePage.current.scrollTop = h;
     }
   }
 
-  if (!moves.length) {
-    return <FullPageMessage
-            message={ labels.UNEXPECTED_ERROR }
-            isHtml={ false }
-            actionBtn={ true }
-            btnLabel={ labels.RELOAD_PAGE }
-            onBtnClick={ () => {
-              window.location.reload ();
-            }}
-          />
-  }
-
-  return (
-    <React.Fragment>
-      { winner ? 
-          <FullPageMessage
-            message={ winnerMessage }
-            isHtml={ false }
-            transparent={ true }
-            actionBtn={ true }
-            btnLabel={ labels.NEW_GAME }
-            onBtnClick={ () => {
-              window.location.reload ();
-            }}
-          /> :
-          null
-        }
-      {
-        (moves.length === 1) ? 
-          <FullPageLoader
-            text={ labels.WAITING}
-            transparent={ true }
-            /> : null
+  render () {
+    const { winner, thisPlayer, moves, opponent } = this.props;
+    let winnerMessage = labels.YOU_WIN;
+    if (winner) {
+      if (winner  !== thisPlayer.playerId) {
+        winnerMessage = labels.OPP_WIN;
       }
-      <div className='game-main-page'>
-        {
-          moves.map ((move, index) => {
-            return <Message
-                    index={ index }
-                    moves={ moves }
-                    key={ move.moveId }
-                    move={ move }
-                    player={ thisPlayer }
-                    opponent={ opponent } />
-          })
-        }
-      </div>
-      <ConnectedOptions />
-    </React.Fragment>
-  );
-};
+    }
+
+    if (!moves.length) {
+      return <FullPageMessage
+              message={ labels.UNEXPECTED_ERROR }
+              isHtml={ false }
+              actionBtn={ true }
+              btnLabel={ labels.RELOAD_PAGE }
+              onBtnClick={ () => {
+                window.location.reload ();
+              }}
+            />
+    }
+    return (
+      <React.Fragment>
+        { winner ? 
+            <FullPageMessage
+              message={ winnerMessage }
+              isHtml={ false }
+              transparent={ true }
+              actionBtn={ true }
+              btnLabel={ labels.NEW_GAME }
+              onBtnClick={ () => {
+                window.location.reload ();
+              }}
+            /> :
+            null
+          }
+        <div className='game-main-page' ref={ this.gamePage }>
+          {
+            moves.map ((move, index) => {
+              return <Message
+                      index={ index }
+                      moves={ moves }
+                      key={ move.moveId }
+                      move={ move }
+                      player={ thisPlayer }
+                      opponent={ opponent } />
+            })
+          }
+        </div>
+        <ConnectedOptions />
+      </React.Fragment>
+    );
+
+  }
+}
 
 Game.propTypes = {
   winner: types.winner.isRequired,
