@@ -1,7 +1,8 @@
 const GOT_CONST = {
   'DEFAULTS': {
     'P_MODE': 'A',
-    'G_MODE': 'C'
+    'G_MODE': 'C',
+    'NUM': 3
   },
   'PLAYER_MODE': {
     'AUTO': 'A',

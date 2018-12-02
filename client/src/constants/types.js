@@ -25,7 +25,9 @@ const types = {
     'isStartNumber': PropTypes.bool.isRequired,
     'playWith': PropTypes.number.isRequired
   }),
-  'opponent': PropTypes.string
+  'opponent': PropTypes.string,
+  'onBtnClick': PropTypes.func,
+  'playWith': PropTypes.number
 };
 
 export default types;

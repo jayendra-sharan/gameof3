@@ -4,6 +4,7 @@ import Message from './components/Message';
 import FullPageMessage from '../shared/FullPageMessage';
 import labels from '../../constants/labels';
 import types from '../../constants/types';
+import ConnectedOptions from '../options/ConnectedOptions';
 
 const Game = ({ thisPlayer,
                 moves,
@@ -21,17 +22,22 @@ const Game = ({ thisPlayer,
           />
   }
   return (
-    <div className='game-main-page'>
-      {
-        moves.map (move => {
-          return <Message
-                  key={ move.playWith }
-                  move={ move }
-                  player={ thisPlayer }
-                  opponent={ opponent } />
-        })
-      }
-    </div>
+    <React.Fragment>
+      <div className='game-main-page'>
+        {
+          moves.map (move => {
+            return <Message
+                    key={ move.playWith }
+                    move={ move }
+                    player={ thisPlayer }
+                    opponent={ opponent } />
+          })
+        }
+      </div>
+      <ConnectedOptions
+        playWith={ moves[moves.length - 1].playWith }
+        />
+    </React.Fragment>
   );
 };
 

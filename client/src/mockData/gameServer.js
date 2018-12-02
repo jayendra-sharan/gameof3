@@ -21,7 +21,8 @@ const gameServer = {
       'isStartNumber': true,
       'playWith': 19
     },
-    'opponent': 'bigtuna'
+    'opponent': 'bigtuna',
+    'playWith': 19
   },
   'gameCount': {
     'data' : {
@@ -59,9 +60,9 @@ const gameServer = {
     'moveData': {
       'gameId': 'G-0298622f2ae60f38ade815',
       'playerId': 'P-b622cb6ccf77194eda21',
-      'input': '19',
+      'input': 19,
       'isStartNumber': true,
-      'playWith': '19'
+      'playWith': 19
     }
   }
 }

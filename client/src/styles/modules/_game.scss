@@ -2,7 +2,7 @@
   width: 100%;
   margin: 10px;
   border: 1px solid;
-  margin-bottom: $options-height;
+  margin-bottom: $options-height + 10;
   padding-top: 20px;
   .message-container {
     background: $message-background;
@@ -33,20 +33,20 @@
     }
   }
   .message-container.my-message {
-    .nick-name {
-      padding-left: $number-dimension / 2;
-    }
-    .input-number {
-      left: -($number-border-width);
-    }
-  }
-  .message-container.their-message {
     margin-left: 40%;
     .nick-name {
       width: 80%;
     }
     .input-number {
       right: -($number-border-width);
+    }
+  }
+  .message-container.their-message {
+    .nick-name {
+      padding-left: $number-dimension / 2;
+    }
+    .input-number {
+      left: -($number-border-width);
     }
   }
 }
