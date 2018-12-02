@@ -5,7 +5,7 @@ const axios = require ('axios');
 const bodyParser = require ('body-parser');
 const cors = require ('cors');
 
-const port = 4001;
+const port = process.env.PORT || 5000;
 const gameRouter = require ('./tempDb/temp-db');
 const socketServer = require ('./tempDb/socket');
 
