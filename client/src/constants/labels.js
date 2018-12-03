@@ -1,4 +1,5 @@
 const labels = {
+  'GAME_HEADER_TITLE': 'GoT: Game of Three!',
   'RELOAD_PAGE': 'Click to start over',
   'NICK_NAME': 'Nick Name',
   'NICK_NAME_EX': 'bigtuna',
@@ -10,6 +11,7 @@ const labels = {
   'GAME_MODE_JOIN': 'Join a game',
   'START_GAME': 'Start Game',
   'START_NUMBER': 'Start Number',
+  'START_NUMBER_ERROR': 'Please enter a number to start the game with',
   'START_EX': 'e.g. 19',
   'SERVER_CONNECT_ERROR': 'Could not connect to the game of 3 server!',
   'REGISTER_PLAYER_ERROR': 'Could not register you on game of 3 server!',

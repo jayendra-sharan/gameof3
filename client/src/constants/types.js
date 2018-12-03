@@ -1,3 +1,6 @@
+/**
+ * @fileoverview creates centrailised props types. Easy to manage and reuse.
+ */
 import PropTypes from 'prop-types';
 
 const types = {

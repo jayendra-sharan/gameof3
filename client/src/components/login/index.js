@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Login Page. Renders the form where user has to fill the
+ * information required to play the game.
+ */
+
 import React from "react";
 import labels from "../../constants/labels";
 import GOT_CONST from "../../constants/gotConstants";
@@ -24,6 +29,11 @@ class Login extends React.Component {
     this._updateState (nextProps);
   }
 
+  /**
+   * @description update the game count when component mounts or receieves new
+   * props.
+   * @param {Object} data this.props | nextProps
+   */
   _updateState (data) {
     const gameCount = this._updateGameCount (this.state.playerMode, data);
     this.setState ({
@@ -111,6 +121,11 @@ class Login extends React.Component {
    */
   _onFormSubmit (event) {
     event.preventDefault ();
+    if (this.state.gameMode === GOT_CONST.GAME_MODE.CREATE &&
+        !this.state.startGameWith) {
+      window.alert (labels.START_NUMBER_ERROR);
+      return;
+    }
     this.props.submitForm ({
       nickname: this.state.nickname,
       gameMode: this.state.gameMode,
@@ -240,6 +255,7 @@ class Login extends React.Component {
   }
 }
 
+//prop types
 Login.propTypes = {
   submitForm: types.submitForm.isRequired,
   availableGameCountAuto: types.availableGameCount.isRequired,

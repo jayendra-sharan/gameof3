@@ -9,9 +9,6 @@ import { appData } from './reducers/appData';
 import { gameMoves } from "./reducers/gameMoves";
 import API from './constants/api';
 
-const socket = io (API.SOCKET_API);
-const socketMiddleware = createSocketMiddleware (socket, 'SOCKET/');
-
 const rootReducers = combineReducers ({
   gameData,
   appData,
@@ -22,8 +19,17 @@ const isDevelopment = (env) => {
   return env === 'development';
 }
 
+const createSocketConnection = (env) => {
+  const url = isDevelopment (env) ? API.SOCKET_API : window.location.origin;
+  return io (url);
+} 
+
+const getSocketMiddleware = (socket) => createSocketMiddleware (socket, 'SOCKET/');
+
 export const configureStore = (env) => {
-  const middlewares = [ thunk, socketMiddleware ];
+  const socket = createSocketConnection (env);
+  const middlewares = [ thunk, getSocketMiddleware (socket) ];
+
   if (isDevelopment (env)) {
     middlewares.push (createLogger ());
   }

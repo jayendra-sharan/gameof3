@@ -1,8 +1,12 @@
+/**
+ * @fileoverview Header title.
+ */
 import React from 'react';
+import labels from '../../constants/labels';
 
 const Header = () => (
   <header>
-    - Game of 3 -
+    { labels.GAME_HEADER_TITLE }
   </header>
 );
 

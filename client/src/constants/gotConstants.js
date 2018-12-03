@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Constants used in the application.
+ */
 const GOT_CONST = {
   'DEFAULTS': {
     'P_MODE': 'A',

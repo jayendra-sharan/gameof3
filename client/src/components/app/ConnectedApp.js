@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Creates connected component, connects App.
+ */
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import App from '.';

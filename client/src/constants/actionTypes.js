@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Actions used in the application.
+ */
 const actionTypes = {  
   'GAME_SERVER': {
     'FETCH_GAME_COUNT_START': 'FETCH_GAME_COUNT_START',

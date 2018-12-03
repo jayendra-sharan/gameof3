@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Main landing page of game. It displays moves and its
+ * calculations, and also Options.
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Message from './components/Message';
@@ -17,7 +21,8 @@ class Game extends React.Component {
   }
 
   /**
-   * @description function moves the game div to all the way to the bottom.
+   * @description Move the div scroll to bottom as soon as component is
+   * updated with the move.
    */
   _scrollToBottom () {
     if (this.gamePage.current) {
@@ -35,6 +40,9 @@ class Game extends React.Component {
       }
     }
 
+    /**
+     * If the moves received is an empty array, display error.
+     */
     if (!moves.length) {
       return <FullPageMessage
               message={ labels.UNEXPECTED_ERROR }
@@ -46,9 +54,12 @@ class Game extends React.Component {
               }}
             />
     }
+    // else render game component.
     return (
       <React.Fragment>
-        { winner ? 
+        { 
+          // display winner message in full page message.
+          winner ? 
             <FullPageMessage
               message={ winnerMessage }
               isHtml={ false }
@@ -81,6 +92,7 @@ class Game extends React.Component {
   }
 }
 
+// prop types;
 Game.propTypes = {
   winner: types.winner.isRequired,
   thisPlayer: types.player.isRequired,

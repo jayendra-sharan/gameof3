@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Options page. Renders options available to the players.
+ */
 import React from 'react';
 import types from '../../constants/types';
 import GOT_CONST from '../../constants/gotConstants';

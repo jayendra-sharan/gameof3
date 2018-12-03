@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Creates connected component, connetcs Game.
+ */
 import { connect } from 'react-redux';
 import Game from '.';
 

@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Creacts connected component, connects Options.
+ */
 import { connect } from 'react-redux';
 import Options from '.';
 import { gameMovesActions } from '../../actions/gameMoves';
@@ -39,7 +42,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-// function creates and returns random string.
+/**
+ * @description function creates and returns random string.
+ */
 const getRandomString = () => Math.floor (Math.random () * 999999 + 999999).toString (32);
 
 /**
