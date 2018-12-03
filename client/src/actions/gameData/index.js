@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Action creator: For getting available game counts.
+ */
+
 import actionTypes from "../../constants/actionTypes";
 import axios from "axios";
 import API from "../../constants/api";

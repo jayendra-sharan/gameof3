@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Action creator: For player registration and game creation/join.
+ */
+
 import actionTypes from "../../constants/actionTypes";
 import axios from "axios";
 import API from "../../constants/api";

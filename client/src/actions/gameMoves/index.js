@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Action creator: For updating game moves.
+ */
+
 import actionTypes from "../../constants/actionTypes";
 
 export const gameMovesActions = {

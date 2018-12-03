@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Reducer: To handle game moves actions.
+ * Contains information game moves in the current game.
+ */
+
 import actionTypes from "../../constants/actionTypes";
 
 export const initialState = {

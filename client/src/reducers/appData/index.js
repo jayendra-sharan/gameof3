@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Reducer: To handle app data actions.
+ * Contains information about current player and current game.
+ */
+
 import actionTypes from "../../constants/actionTypes";
 
 export const initialState = {

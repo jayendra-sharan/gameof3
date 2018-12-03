@@ -1,5 +1,9 @@
-import actionTypes from "../../constants/actionTypes";
+/**
+ * @fileoverview Reducer: To handle game data actions.
+ * Contains information available game counts.
+ */
 
+import actionTypes from "../../constants/actionTypes";
 
 export const initialState = {
   availableGameCount: 0,
