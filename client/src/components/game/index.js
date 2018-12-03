@@ -12,10 +12,16 @@ class Game extends React.Component {
     this.gamePage = React.createRef();
   }
 
-  componentWillReceiveProps () {
-    debugger;
+  componentDidUpdate () {
+    this._scrollToBottom ();
+  }
+
+  /**
+   * @description function moves the game div to all the way to the bottom.
+   */
+  _scrollToBottom () {
     if (this.gamePage.current) {
-      const h = this.gamePage.current.getBoundingClientRect ().height;
+      const h = this.gamePage.current.scrollHeight;
       this.gamePage.current.scrollTop = h;
     }
   }

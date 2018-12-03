@@ -13,7 +13,6 @@
 }
 
 .full-page-message {
-  // height: 100vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -33,6 +32,7 @@
   right: 0;
   z-index: 1;
 }
+
 #root > .full-page-message {
   height: 100vh;
 }

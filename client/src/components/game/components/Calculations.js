@@ -6,7 +6,7 @@ const Calculations = ({ oldPlayWith, input, newPlayWith }) => {
   return (
     <div className='calculation-container'>
       <div className='calc-row'>
-        {`[( ${oldPlayWith} ${input === 0 ? '+' : ''} ${input.toString()}) / ${GOT_CONST.DEFAULTS.NUM}]`}
+        {`[( ${oldPlayWith} ${input === 0 ? '+' : (input === 1 ? '+' : '')} ${input.toString()}) / ${GOT_CONST.DEFAULTS.NUM}]`}
       </div>
       <div className='calc-row'>
         { newPlayWith }

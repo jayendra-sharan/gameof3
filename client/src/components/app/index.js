@@ -1,3 +1,11 @@
+/**
+ * @fileoverview this is the front page of the application. It also decides
+ * which components to render based on the application state. For example,
+ * if there was a server error, it will render the full page message component.
+ * In normal conditions, it displays a login component and when the user logs in,
+ * it renders the game component.
+ */
+
 import React from 'react';
 import Login from '../login';
 import Layout from '../shared/Layout';
@@ -29,10 +37,12 @@ class App extends React.Component {
             thisPlayerId,
             submitForm } = this.props;
 
+    // show loader when xhr call is running.
     if ( fetchingAvailableGameCount) {
       return <FullPageLoader />
     }
 
+    // show server connection error if fetch has completed but failed.
     if ( !fetchingAvailableGameCount && fetchAvailableGameCountFailed) {
       return <FullPageMessage
                 message={ labels.SERVER_CONNECT_ERROR }
@@ -45,6 +55,8 @@ class App extends React.Component {
               />
     }
 
+    // if thisPlayerId is present, i.e. player got registered,
+    // load game component.
     if (thisPlayerId) {
       return (
         <Layout>
@@ -53,6 +65,7 @@ class App extends React.Component {
       )
     }
 
+    // if registering player call finished, but failed, display error.
     if (!registeringPlayer && registerPlayerFailed) {
       return <FullPageMessage
         message={ labels.REGISTER_PLAYER_ERROR }
@@ -64,10 +77,12 @@ class App extends React.Component {
         }}
         />
     }
+
     return (
       <React.Fragment>
         <Layout>
             {
+              // during xhr call, show loader.
               registeringPlayer && <FullPageLoader transparent={ true } />
             }
             <Login
@@ -84,6 +99,7 @@ class App extends React.Component {
   }
 }
 
+// Prop Types.
 App.propTypes = {
   fetchAvailableGameCountFailed:types.fetchAvailableGameCountFailed.isRequired,
   fetchingAvailableGameCount: types.fetchingAvailableGameCount.isRequired,
