@@ -17,11 +17,11 @@ app.use (bodyParser.urlencoded({ extended: true }));
 app.use (bodyParser.json ());
 app.use (gameRouter);
 
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, 'client/build')))
 // Anything that doesn't match the above, send back index.html
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '../client/build/index.html'))
+  res.sendFile(path.join(__dirname + 'client/build/index.html'))
 });
 
 const server = http.createServer (app);
