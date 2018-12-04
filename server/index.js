@@ -27,15 +27,6 @@ app.get('*', (req, res) => {
 const server = http.createServer (app);
 const io = socketIo (server);
 
-const getApiAndEmit = async socket => {
-  try {
-    const res = await axios.get ('https://dog.ceo/api/breeds/image/random');
-    socket.emit ('FromAPI', res.data.message);
-  } catch (e) {
-    console.error (e);
-  }
-};
-
 socketServer.createSocket (io);
 
 server.listen (port, () => {
